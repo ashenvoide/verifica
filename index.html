@@ -5,132 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verifica - Detector de Fake News</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3a8a, #9333ea);
+      color: #fff;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
-      background: linear-gradient(135deg, #1e40af, #3b82f6);
-      color: white;
-      padding: 20px;
     }
+
     .card {
-      background: white;
-      color: #111;
-      padding: 30px;
-      border-radius: 20px;
-      width: 420px;
-      max-width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 1rem;
       text-align: center;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-      animation: fadeIn 1s ease;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 0.8s ease-in-out;
     }
+
     h1 {
-      color: #1e40af;
-      margin-bottom: 10px;
-      font-size: 28px;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
     }
-    .subtitle { 
-      font-size: 15px;
-      margin-bottom: 20px;
-      color: #444;
+
+    .subtitle {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #d1d5db;
     }
+
     textarea {
       width: 100%;
       height: 120px;
-      margin-bottom: 15px;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid #bbb;
+      padding: 1rem;
+      border: none;
+      border-radius: 0.8rem;
+      margin-bottom: 1rem;
       resize: none;
-      font-size: 14px;
+      font-size: 1rem;
       outline: none;
-      transition: 0.3s;
     }
-    textarea:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 6px rgba(37,99,235,0.5);
-    }
+
     button {
-      background: linear-gradient(90deg, #2563eb, #1e3a8a);
+      background: #2563eb;
       color: white;
       border: none;
-      padding: 12px 25px;
-      border-radius: 10px;
+      padding: 0.8rem 1.5rem;
+      border-radius: 0.8rem;
       cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 1rem;
       transition: 0.3s;
     }
+
     button:hover {
-      transform: scale(1.05);
-      background: linear-gradient(90deg, #1e3a8a, #2563eb);
-    }
-    .resultado {
-      display: none;
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 15px;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-    }
-    .resultado.show {
-      opacity: 1;
-    }
-    footer {
-      margin-top: 20px;
-      font-size: 12px;
-      color: #666;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h1>🔎 Verifica</h1>
-    <p class="subtitle">Cole uma notícia abaixo e veja se ela pode ser fake news.</p>
-    <textarea id="noticia" placeholder="Cole aqui o texto da notícia..."></textarea>
-    <button onclick="verificarNoticia()">Verificar</button>
-    <div id="resultado" class="resultado"></div>
-    <footer>Projeto Verifica – Combate à desinformação</footer>
-  </div>
-
-  <script>
-    function verificarNoticia() {
-      const texto = document.getElementById('noticia').value.trim().toLowerCase();
-      const resultado = document.getElementById('resultado');
-
-      if (!texto) {
-        resultado.style.display = 'block';
-        resultado.textContent = '⚠️ Por favor, insira um texto para verificar.';
-        resultado.style.background = '#facc15';
-        resultado.style.color = '#111';
-        resultado.classList.add('show');
-        return;
-      }
-
-      const suspeitos = ['cura milagrosa','chip','veneno','manipulação','escândalo','urgente','segredo revelado'];
-      const encontrou = suspeitos.some(p => texto.includes(p));
-
-      resultado.style.display = 'block';
-      if (encontrou) {
-        resultado.textContent = '🚨 Esta notícia parece suspeita. Pode ser fake news!';
-        resultado.style.background = '#dc2626';
-        resultado.style.color = 'white';
-      } else {
-        resultado.textContent = '✅ Não foram encontrados sinais claros de fake news.';
-        resultado.style.background = '#16a34a';
-        resultado.style.color = 'white';
-      }
-      resultado.classList.add('show');
-    }
-  </script>
-</body>
-</html>
+      background: #
