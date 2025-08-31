@@ -8,83 +8,99 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      background: linear-gradient(135deg, #0f172a, #1e40af, #3b82f6);
+      background-size: 300% 300%;
+      animation: gradientMove 8s ease infinite;
       color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       padding: 20px;
     }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     .card {
-      background: white;
-      color: #111;
-      padding: 30px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
       border-radius: 20px;
+      padding: 25px;
       width: 420px;
       max-width: 100%;
       text-align: center;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
       animation: fadeIn 1s ease;
     }
     h1 {
-      color: #1e40af;
+      font-size: 30px;
       margin-bottom: 10px;
-      font-size: 28px;
     }
-    .subtitle { 
-      font-size: 15px;
+    .subtitle {
+      font-size: 14px;
       margin-bottom: 20px;
-      color: #444;
+      opacity: 0.8;
     }
     textarea {
       width: 100%;
-      height: 120px;
-      margin-bottom: 15px;
-      padding: 12px;
+      height: 100px;
       border-radius: 12px;
-      border: 1px solid #bbb;
-      resize: none;
+      border: none;
+      padding: 12px;
       font-size: 14px;
+      resize: none;
+      margin-bottom: 15px;
       outline: none;
-      transition: 0.3s;
-    }
-    textarea:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 6px rgba(37,99,235,0.5);
     }
     button {
       background: linear-gradient(90deg, #2563eb, #1e3a8a);
       color: white;
       border: none;
       padding: 12px 25px;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       font-size: 16px;
       font-weight: bold;
-      transition: 0.3s;
+      transition: all 0.3s;
     }
     button:hover {
       transform: scale(1.05);
       background: linear-gradient(90deg, #1e3a8a, #2563eb);
+      box-shadow: 0 0 12px #2563eb;
     }
     .resultado {
       display: none;
       margin-top: 15px;
-      padding: 12px;
+      padding: 15px;
       border-radius: 12px;
-      font-weight: bold;
       font-size: 15px;
-      opacity: 0;
-      transition: opacity 0.8s ease;
+      font-weight: bold;
+      animation: pop 0.5s ease;
     }
-    .resultado.show {
-      opacity: 1;
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .historico {
+      margin-top: 20px;
+      text-align: left;
+      font-size: 13px;
+      max-height: 120px;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+    .historico p {
+      background: rgba(255,255,255,0.15);
+      padding: 6px;
+      border-radius: 8px;
+      margin-bottom: 6px;
     }
     footer {
-      margin-top: 20px;
+      margin-top: 15px;
       font-size: 12px;
-      color: #666;
+      opacity: 0.7;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -95,42 +111,15 @@
 <body>
   <div class="card">
     <h1>🔎 Verifica</h1>
-    <p class="subtitle">Cole uma notícia abaixo e veja se ela pode ser fake news.</p>
-    <textarea id="noticia" placeholder="Cole aqui o texto da notícia..."></textarea>
+    <p class="subtitle">Cole uma notícia abaixo e descubra se pode ser fake!</p>
+    <textarea id="noticia" placeholder="Digite ou cole a notícia aqui..."></textarea>
     <button onclick="verificarNoticia()">Verificar</button>
     <div id="resultado" class="resultado"></div>
-    <footer>Projeto Verifica – Combate à desinformação</footer>
+    <div class="historico" id="historico"></div>
+    <footer>⚡ Projeto Verifica – Combate à desinformação</footer>
   </div>
 
   <script>
     function verificarNoticia() {
       const texto = document.getElementById('noticia').value.trim().toLowerCase();
-      const resultado = document.getElementById('resultado');
-
-      if (!texto) {
-        resultado.style.display = 'block';
-        resultado.textContent = '⚠️ Por favor, insira um texto para verificar.';
-        resultado.style.background = '#facc15';
-        resultado.style.color = '#111';
-        resultado.classList.add('show');
-        return;
-      }
-
-      const suspeitos = ['cura milagrosa','chip','veneno','manipulação','escândalo','urgente','segredo revelado'];
-      const encontrou = suspeitos.some(p => texto.includes(p));
-
-      resultado.style.display = 'block';
-      if (encontrou) {
-        resultado.textContent = '🚨 Esta notícia parece suspeita. Pode ser fake news!';
-        resultado.style.background = '#dc2626';
-        resultado.style.color = 'white';
-      } else {
-        resultado.textContent = '✅ Não foram encontrados sinais claros de fake news.';
-        resultado.style.background = '#16a34a';
-        resultado.style.color = 'white';
-      }
-      resultado.classList.add('show');
-    }
-  </script>
-</body>
-</html>
+      const resultad
