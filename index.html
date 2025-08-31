@@ -3,79 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifica - Combate às Fake News</title>
+  <title>Verifica - Detector de Fake News</title>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6, #06b6d4);
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
       color: white;
+      padding: 20px;
     }
     .card {
       background: white;
-      color: black;
+      color: #111;
       padding: 30px;
-      border-radius: 15px;
-      width: 400px;
-      max-width: 90%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border-radius: 20px;
+      width: 420px;
+      max-width: 100%;
       text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease;
     }
     h1 {
-      color: #1e3a8a;
+      color: #1e40af;
       margin-bottom: 10px;
+      font-size: 28px;
     }
-    .subtitle {
-      font-size: 14px;
+    .subtitle { 
+      font-size: 15px;
       margin-bottom: 20px;
-      color: #555;
+      color: #444;
     }
     textarea {
       width: 100%;
       height: 120px;
       margin-bottom: 15px;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #bbb;
       resize: none;
       font-size: 14px;
+      outline: none;
+      transition: 0.3s;
+    }
+    textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 6px rgba(37,99,235,0.5);
     }
     button {
-      background: #2563eb;
+      background: linear-gradient(90deg, #2563eb, #1e3a8a);
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
+      padding: 12px 25px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: 0.3s;
       font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
     }
     button:hover {
-      background: #1e40af;
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #1e3a8a, #2563eb);
     }
     .resultado {
       display: none;
       margin-top: 15px;
-      padding: 10px;
-      border-radius: 10px;
+      padding: 12px;
+      border-radius: 12px;
       font-weight: bold;
+      font-size: 15px;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .resultado.show {
+      opacity: 1;
     }
     footer {
       margin-top: 20px;
       font-size: 12px;
-      color: #888;
+      color: #666;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Verifica</h1>
-    <p class="subtitle">Cole o texto de uma notícia e descubra se ela pode ser fake news.</p>
-    <textarea id="noticia" placeholder="Cole aqui o texto..."></textarea>
+    <h1>🔎 Verifica</h1>
+    <p class="subtitle">Cole uma notícia abaixo e veja se ela pode ser fake news.</p>
+    <textarea id="noticia" placeholder="Cole aqui o texto da notícia..."></textarea>
     <button onclick="verificarNoticia()">Verificar</button>
     <div id="resultado" class="resultado"></div>
     <footer>Projeto Verifica – Combate à desinformação</footer>
@@ -89,12 +110,13 @@
       if (!texto) {
         resultado.style.display = 'block';
         resultado.textContent = '⚠️ Por favor, insira um texto para verificar.';
-        resultado.style.background = '#fbbf24';
-        resultado.style.color = 'black';
+        resultado.style.background = '#facc15';
+        resultado.style.color = '#111';
+        resultado.classList.add('show');
         return;
       }
 
-      const suspeitos = ['cura milagrosa', 'chip', 'veneno', 'manipulação', 'escândalo', 'urgente'];
+      const suspeitos = ['cura milagrosa','chip','veneno','manipulação','escândalo','urgente','segredo revelado'];
       const encontrou = suspeitos.some(p => texto.includes(p));
 
       resultado.style.display = 'block';
@@ -107,6 +129,7 @@
         resultado.style.background = '#16a34a';
         resultado.style.color = 'white';
       }
+      resultado.classList.add('show');
     }
   </script>
 </body>
