@@ -122,4 +122,38 @@
   <script>
     function verificarNoticia() {
       const texto = document.getElementById('noticia').value.trim().toLowerCase();
-      const resultad
+      const resultado = document.getElementById('resultado');
+      const historico = document.getElementById('historico');
+
+      if (!texto) {
+        resultado.style.display = 'block';
+        resultado.textContent = '⚠️ Digite algo para verificar.';
+        resultado.style.background = '#facc15';
+        resultado.style.color = '#111';
+        return;
+      }
+
+      const suspeitos = ['cura milagrosa','chip','veneno','manipulação','escândalo','urgente','segredo revelado'];
+      const encontrou = suspeitos.some(p => texto.includes(p));
+
+      resultado.style.display = 'block';
+      if (encontrou) {
+        resultado.textContent = '🚨 Possível Fake News detectada!';
+        resultado.style.background = '#dc2626';
+        resultado.style.color = 'white';
+      } else {
+        resultado.textContent = '✅ Parece confiável, não foram detectados termos suspeitos.';
+        resultado.style.background = '#16a34a';
+        resultado.style.color = 'white';
+      }
+
+      // adiciona histórico
+      const item = document.createElement("p");
+      item.textContent = (encontrou ? "🚨 Suspeita" : "✅ Ok") + " → " + texto.substring(0,50) + "...";
+      historico.prepend(item);
+
+      document.getElementById('noticia').value = '';
+    }
+  </script>
+</body>
+</html>
