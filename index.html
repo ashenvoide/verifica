@@ -1,26 +1,37 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifica - Combate à Fake News</title>
-  <style>
-    /* Estilos gerais */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+<body>
+  <div class="card">
+    <h1>Verifica</h1>
+    <p class="subtitle">Insira o texto de uma notícia e descubra se ela pode ser fake news.</p>
+    <textarea id="noticia" placeholder="Cole aqui o texto..."></textarea>
+    <button onclick="verificarNoticia()">Verificar</button>
+    <div id="resultado" class="resultado"></div>
+    <footer>Projeto Verifica – Combate à desinformação</footer>
+  </div>
 
-    body {
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+  <script>
+    function verificarNoticia() {
+      const texto = document.getElementById('noticia').value.trim().toLowerCase();
+      const resultado = document.getElementById('resultado');
 
-    .conta
+      if (!texto) {
+        resultado.style.display = 'block';
+        resultado.textContent = 'Por favor, insira um texto para verificar.';
+        resultado.style.color = '#fbbf24';
+        return;
+      }
+
+      const suspeitos = ['cura milagrosa', 'chip', 'veneno', 'manipulação', 'escândalo', 'urgente'];
+      const encontrou = suspeitos.some(p => texto.includes(p));
+
+      resultado.style.display = 'block';
+      if (encontrou) {
+        resultado.textContent = '⚠️ Esta notícia parece suspeita. Pode ser fake news!';
+        resultado.style.background = '#dc2626';
+      } else {
+        resultado.textContent = '✅ Não foram encontrados sinais claros de fake news.';
+        resultado.style.background = '#16a34a';
+      }
+      resultado.style.color = 'white';
+    }
+  </script>
+</body>
