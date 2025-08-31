@@ -8,11 +8,22 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>📰 Verifica</h1>
-  <p>Digite uma notícia para verificar se pode ser fake:</p>
+  <header>
+    <h1>🔎 Verifica</h1>
+    <p>Descubra se uma notícia pode ser <strong>fake news</strong>.</p>
+  </header>
 
-  <textarea id="noticia" rows="6" cols="50" placeholder="Cole aqui a notícia..."></textarea><br>
-  <button onclick="verificarNoticia()">Verificar</button>
-  <p id="resultado"></p>
+  <main>
+    <section class="card">
+      <h2>Teste uma notícia</h2>
+      <textarea id="noticia" rows="6" placeholder="Cole aqui a notícia..."></textarea>
+      <button onclick="verificarNoticia()">Verificar</button>
+      <p id="resultado"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>📰 Projeto <strong>Verifica</strong> - Combate à desinformação</p>
+  </footer>
 </body>
 </html>
