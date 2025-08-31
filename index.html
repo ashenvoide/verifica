@@ -3,27 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifica - Combate às Fake News</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <header>
-    <h1>🔎 Verifica</h1>
-    <p>Descubra se uma notícia pode ser <strong>fake news</strong>.</p>
-  </header>
+  <title>Verifica - Combate à Fake News</title>
+  <style>
+    /* Estilos gerais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-  <main>
-    <section class="card">
-      <h2>Teste uma notícia</h2>
-      <textarea id="noticia" rows="6" placeholder="Cole aqui a notícia..."></textarea>
-      <button onclick="verificarNoticia()">Verificar</button>
-      <p id="resultado"></p>
-    </section>
-  </main>
+    body {
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-  <footer>
-    <p>📰 Projeto <strong>Verifica</strong> - Combate à desinformação</p>
-  </footer>
-</body>
-</html>
+    .conta
