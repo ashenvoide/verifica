@@ -2,23 +2,28 @@ function verificarNoticia() {
     const texto = document.getElementById("textoNoticia").value.toLowerCase();
     const resultado = document.getElementById("resultado");
 
-    // Lista ampliada de palavras e expressões suspeitas
     const palavrasSuspeitas = [
-        // saúde
-        "cura milagrosa", "cura imediata", "sem efeitos colaterais", "remédio secreto",
-        "vacina perigosa", "vacina mata", "vacina causa autismo", "tratamento caseiro",
-        "não tome vacina", "nova doença inventada",
+        "cura milagrosa", "remédio secreto", "vacina perigosa", "vacina mata", "vacina causa autismo",
+        "chip 5g", "chip na vacina", "terra plana", "fim do mundo", "governo esconde",
+        "cientistas escondem", "mídia comprada", "controle da mente", "nova doença inventada",
+        "ganhe dinheiro fácil", "fique rico rápido", "100% garantido", "oferta imperdível",
+        "ninguém fala sobre isso", "verdade oculta", "segredo revelado", "conspiração",
+        "não tome vacina", "nasa mente", "trabalhe 1 hora por dia", "robôs vão dominar"
+    ];
 
-        // política e manipulação
-        "governo esconde", "eles não querem que você saiba", "proibido divulgar",
-        "mídia comprada", "grande conspiração", "golpe confirmado",
+    let encontrou = false;
+    for (let palavra of palavrasSuspeitas) {
+        if (texto.includes(palavra)) {
+            encontrou = true;
+            break;
+        }
+    }
 
-        // ciência
-        "terra plana", "cientistas escondem", "teoria proibida",
-        "nasa mente", "fim do mundo confirmado",
-
-        // tecnologia
-        "chip 5g", "controle da mente", "chip na vacina", "robôs vão dominar",
-
-        // dinheiro e fraude
-        "fique rico rápido", "ganhe dinheiro fácil", "t
+    if (encontrou) {
+        resultado.innerHTML = "🚨 Possível Fake News detectada!";
+        resultado.className = "alerta-fake";
+    } else {
+        resultado.innerHTML = "✅ Não encontramos sinais claros de fake news.";
+        resultado.className = "alerta-verdade";
+    }
+}
