@@ -4,70 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verifica - Detector de Fake News</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #fff;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    p {
-      margin-bottom: 20px;
-      font-size: 1.1rem;
-    }
-    textarea {
-      width: 90%;
-      max-width: 600px;
-      height: 150px;
-      border-radius: 12px;
-      border: none;
-      padding: 15px;
-      font-size: 1rem;
-      resize: none;
-      outline: none;
-    }
-    button {
-      margin-top: 15px;
-      padding: 12px 25px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background-color: #ffcc00;
-      color: #000;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    button:hover {
-      background-color: #ffdb4d;
-    }
-    #resultado {
-      margin-top: 20px;
-      font-size: 1.3rem;
-      font-weight: bold;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🔎 Verifica</h1>
-  <p>Cole uma notícia abaixo para analisar possíveis sinais de <b>fake news</b>:</p>
+  <header>
+    <h1>📰 Verifica</h1>
+    <p>Seu aliado contra notícias falsas</p>
+  </header>
 
-  <textarea id="noticia" placeholder="Cole aqui a notícia..."></textarea><br>
-  <button onclick="verificarNoticia()">Verificar</button>
+  <main>
+    <section class="checker">
+      <textarea id="newsInput" placeholder="Cole aqui a notícia para verificar..."></textarea>
+      <button onclick="checkNews()">Verificar</button>
+      <div id="result"></div>
+    </section>
+  </main>
 
-  <div id="resultado"></div>
+  <footer>
+    <p>Desenvolvido com ❤️ para combate à desinformação</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
