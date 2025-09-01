@@ -1,25 +1,24 @@
-function checkNews() {
-  const text = document.getElementById("newsInput").value.toLowerCase();
-  const resultDiv = document.getElementById("result");
+function verificarNoticia() {
+    const texto = document.getElementById("textoNoticia").value.toLowerCase();
+    const resultado = document.getElementById("resultado");
 
-  // Lista de palavras suspeitas
-  const fakeKeywords = [
-    "urgente", "exclusivo", "milagre", "cura", "segredo",
-    "proibido", "não querem que você saiba", "compartilhe já",
-    "100%", "garantido", "desmascarado", "golpe", "teoria",
-    "revelado", "inacreditável", "censurado"
-  ];
+    // Lista ampliada de palavras e expressões suspeitas
+    const palavrasSuspeitas = [
+        // saúde
+        "cura milagrosa", "cura imediata", "sem efeitos colaterais", "remédio secreto",
+        "vacina perigosa", "vacina mata", "vacina causa autismo", "tratamento caseiro",
+        "não tome vacina", "nova doença inventada",
 
-  let found = fakeKeywords.some(word => text.includes(word));
+        // política e manipulação
+        "governo esconde", "eles não querem que você saiba", "proibido divulgar",
+        "mídia comprada", "grande conspiração", "golpe confirmado",
 
-  if (found) {
-    resultDiv.innerHTML = "🚨 Possível Fake News detectada!";
-    resultDiv.style.color = "red";
-  } else if (text.trim() === "") {
-    resultDiv.innerHTML = "⚠️ Por favor, cole uma notícia para verificar.";
-    resultDiv.style.color = "orange";
-  } else {
-    resultDiv.innerHTML = "✅ Nenhum sinal claro de Fake News encontrado.";
-    resultDiv.style.color = "green";
-  }
-}
+        // ciência
+        "terra plana", "cientistas escondem", "teoria proibida",
+        "nasa mente", "fim do mundo confirmado",
+
+        // tecnologia
+        "chip 5g", "controle da mente", "chip na vacina", "robôs vão dominar",
+
+        // dinheiro e fraude
+        "fique rico rápido", "ganhe dinheiro fácil", "t
