@@ -1,41 +1,51 @@
-// Lista de palavras-chave suspeitas
-const palavrasChave = [
-  "vacina", "fraude", "golpe", "mentira", "boato", "farsa",
-  "cura", "remédio", "milagroso", "secreto", "escondido",
-  "conspiração", "terra plana", "manipulado", "roubado",
-  "enganar", "enganoso", "proibido", "urgente", "compartilhe",
-  "fake", "falso", "fraudado", "ameaça", "escândalo"
+// Lista de palavras e expressões suspeitas
+const palavrasSuspeitas = [
+  "fake", "boato", "mentira", "não acredite", "enganar", "golpe",
+  "urgente", "compartilhe já", "não deixe de repassar", "antes que apaguem",
+  "não querem que você saiba", "espalhe agora", "cuidado", "atenção",
+  "governo esconde", "cientistas escondem", "mídia não mostra",
+  "grande conspiração", "eles não querem", "segredo revelado",
+  "proibido falar", "escondem de você",
+  "cura milagrosa", "cura garantida", "tratamento secreto", 
+  "remédio caseiro", "cura caseira", "cura natural imediata",
+  "vacina causa", "vacina mata", "vacina perigosa",
+  "cura em 24 horas", "cura em 7 dias", "100% garantido",
+  "fraude eleitoral", "urnas fraudadas", "voto manipulado",
+  "eleição roubada", "golpe confirmado", "plano secreto do governo",
+  "terra plana", "nunca fomos à lua", "ciência mente",
+  "aquecimento global é mentira", "teoria inventada",
+  "milagre comprovado", "sinais do fim dos tempos", "profecia revelada",
+  "cura espiritual", "revelação divina"
 ];
 
-// Expressões sensacionalistas
-const expressoesSuspeitas = [
-  "compartilhe já", "antes que apaguem", "não querem que você saiba",
-  "espalhe agora", "proibido falar", "cura garantida", "100% seguro",
-  "vacina mata", "urnas fraudadas", "nunca fomos à lua"
-];
-
-// Fontes confiáveis
+// Lista de fontes confiáveis
 const fontesConfiaveis = [
-  "g1.globo.com", "bbc.com", "agenciapublica.org",
-  "lupa.uol.com.br", "estadao.com.br", "folha.uol.com.br", "cnnbrasil.com.br"
+  "g1.globo.com",
+  "bbc.com",
+  "agenciapublica.org",
+  "lupa.uol.com.br",
+  "estadao.com.br",
+  "folha.uol.com.br",
+  "cnnbrasil.com.br"
 ];
 
-// Funções de verificação
+// Função para verificar se contém palavras suspeitas
 function contemPalavraSuspeita(texto) {
-  return palavrasChave.some(p => texto.includes(p));
+  return palavrasSuspeitas.some(palavra =>
+    texto.toLowerCase().includes(palavra.toLowerCase())
+  );
 }
 
-function contemExpressaoSuspeita(texto) {
-  return expressoesSuspeitas.some(e => texto.includes(e));
-}
-
+// Função para verificar se contém fonte confiável
 function contemFonteConfiavel(texto) {
-  return fontesConfiaveis.some(f => texto.includes(f));
+  return fontesConfiaveis.some(fonte =>
+    texto.toLowerCase().includes(fonte.toLowerCase())
+  );
 }
 
-// Função principal
+// Função principal de verificação
 function verificarNoticia() {
-  const texto = document.getElementById("noticia").value.toLowerCase();
+  const texto = document.getElementById("noticia").value;
   const resultado = document.getElementById("resultado");
 
   if (texto.trim() === "") {
@@ -45,13 +55,13 @@ function verificarNoticia() {
   }
 
   if (contemFonteConfiavel(texto)) {
-    resultado.innerHTML = "✅ Essa notícia parece vir de uma <b>fonte confiável</b>.";
-    resultado.style.color = "lightgreen";
-  } else if (contemExpressaoSuspeita(texto) || contemPalavraSuspeita(texto)) {
+    resultado.innerHTML = "✅ Essa notícia parece ser de uma <b>fonte confiável</b>.";
+    resultado.style.color = "green";
+  } else if (contemPalavraSuspeita(texto)) {
     resultado.innerHTML = "🚨 Essa notícia contém sinais de <b>fake news</b>. Tenha cuidado!";
     resultado.style.color = "red";
   } else {
-    resultado.innerHTML = "ℹ️ Não encontramos sinais claros de fake news. Consulte fontes confiáveis.";
-    resultado.style.color = "yellow";
+    resultado.innerHTML = "ℹ️ Não encontramos indícios claros de fake news, mas sempre confirme em fontes confiáveis.";
+    resultado.style.color = "blue";
   }
 }
