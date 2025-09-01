@@ -68,3 +68,8 @@ const palavrasSuspeitas = [
   "milagre comprovado", "sinais do fim dos tempos", "profecia revelada",
   "cura espiritual", "revelação divina"
 ];
+const fontesConfiaveis = ["g1.globo.com", "bbc.com", "agenciapublica.org", "lupa.uol.com.br"];
+
+function verificarFonte(texto) {
+  return fontesConfiaveis.some(fonte => texto.includes(fonte));
+}
