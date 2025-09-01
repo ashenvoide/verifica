@@ -1,48 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Verifica - Detector de Fake News</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: linear-gradient(135deg, #0077ff, #00ffaa);
-      color: #fff; min-height: 100vh; margin: 0;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      padding: 24px;
-    }
-    h1 { margin: 0 0 12px; }
-    p.subtitle { margin: 0 0 20px; opacity: .9; }
-    textarea {
-      width: 90%; max-width: 700px; height: 150px;
-      padding: 12px; border-radius: 10px; border: none; font-size: 16px; margin-bottom: 14px;
-    }
-    button {
-      background: #fff; color: #0077ff; font-size: 16px; font-weight: 700;
-      padding: 10px 18px; border: 0; border-radius: 8px; cursor: pointer; transition: .2s;
-    }
-    button:hover { transform: scale(1.03); }
-    #resultado { margin-top: 16px; font-size: 18px; font-weight: 700; }
-  </style>
-</head>
-<body>
-  <h1>🔎 Verifica</h1>
-  <p class="subtitle">Cole uma notícia e veja se pode ser falsa.</p>
-
-  <textarea id="noticia" placeholder="Cole aqui a notícia para verificar..."></textarea><br/>
-  <button onclick="verificarNoticia()">Verificar</button>
-
-  <p id="resultado"></p>
-
-  <!-- Carrega o JS; o ?v= força o navegador a pegar a versão nova -->
-  <script src="script.js?v=1"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verifica - Detector de Fake News</title>
@@ -111,4 +69,6 @@
 
   <div id="resultado"></div>
 
-  <script src="script.
+  <script src="script.js"></script>
+</body>
+</html>
