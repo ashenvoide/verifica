@@ -1,57 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifica - Detector de Fake News</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: linear-gradient(135deg, #0077ff, #00ffaa);
-      color: #fff;
-      min-height: 100vh;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+function verificarNoticia() {
+  const texto = (document.getElementById("noticia").value || "").toLowerCase().trim();
+  const resultado = document.getElementById("resultado");
 
-    h1 {
-      margin-bottom: 20px;
-    }
+  // 1) checagem rápida: parece notícia?
+  if (texto.length < 15 || texto.split(/\s+/).length < 5) {
+    resultado.textContent = "ℹ️ Isso não parece ser uma notícia.";
+    resultado.style.color = "#ffd54f"; // amarelo
+    return;
+  }
 
-    textarea {
-      width: 80%;
-      height: 150px;
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
+  // 2) palavras/expressões suspeitas
+  const palavrasSuspeitas = [
+    // saúde e “milagres”
+    "cura milagrosa","remédio secreto","chá milagroso","óleo essencial cura",
+    "vacina perigosa","vacina mata","vacina causa autismo","tratamento caseiro",
+    // conspirações
+    "governo esconde","segredo revelado","plano secreto","nova ordem mundial",
+    "controle da mente","chip implantado","ninguém quer que você saiba","compartilhe antes que apaguem",
+    // ciência absurda
+    "dinossauros vivos","nasa confirma","lua vai cair","buraco negro na terra","fim do mundo",
+    // política/eleições
+    "urnas fraudadas","eleição roubada","golpe confirmado","fraude confirmada",
+    // dinheiro fácil
+    "ganhe dinheiro fácil","fique rico rápido","método infalível","pirâmide financeira",
+    // outros
+    "alienígenas confirmados","terra plana","profecia do apocalipse"
+  ];
 
-    button {
-      background: #fff;
-      color: #0077ff;
-      font-size: 18px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+  let suspeita = palavrasSuspeitas.some(p => texto.includes(p));
 
-    button:hover {
-      background: #ffcc00;
-      color: #000;
-    }
-
-    #resultado {
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-  </style>
-</head>
+  if (suspeita) {
+    resultado.textContent = "🚨 Possível Fake News detectada!";
+    resultado.style.color = "#ff6b6b"; // vermelho
+  } else {
+    resultado.textContent = "✅ Não encontramos sinais claros de Fake News.";
+    resultado.style.color = "#a3e635"; // verde
+  }
+}
