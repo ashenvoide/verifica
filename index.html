@@ -7,20 +7,40 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>📰 Verifica</h1>
-    <p>Seu detector de Fake News online</p>
-  </header>
+  <!-- Tela 1: Aviso -->
+  <section id="tela-aviso" class="tela ativa">
+    <div class="conteudo">
+      <h1>⚠️ Aviso Importante</h1>
+      <p>Este site é um projeto experimental. Ele <strong>pode cometer erros</strong> na detecção de fake news.  
+      Use-o apenas como apoio e sempre confirme em fontes confiáveis.</p>
+      <button onclick="irPara('tela-educacao')">Concordo e Continuar</button>
+    </div>
+  </section>
 
-  <main>
-    <textarea id="textoNoticia" placeholder="Cole aqui a notícia que deseja verificar..."></textarea>
-    <button onclick="verificarNoticia()">Verificar</button>
-    <div id="resultado"></div>
-  </main>
+  <!-- Tela 2: Educação -->
+  <section id="tela-educacao" class="tela">
+    <div class="conteudo">
+      <h1>🧠 Como detectar Fake News</h1>
+      <ul>
+        <li>Desconfie de títulos sensacionalistas ou alarmistas.</li>
+        <li>Verifique a fonte da informação (é confiável?).</li>
+        <li>Pesquise em mais de um site antes de acreditar.</li>
+        <li>Desconfie de mensagens que pedem para "compartilhar urgentemente".</li>
+        <li>Consulte agências de checagem como <a href="https://piaui.folha.uol.com.br/lupa/" target="_blank">Lupa</a> e <a href="https://apublica.org/" target="_blank">Agência Pública</a>.</li>
+      </ul>
+      <button onclick="irPara('tela-detector')">Ir para o Detector</button>
+    </div>
+  </section>
 
-  <footer>
-    <p>⚡ Projeto acadêmico de combate à desinformação - Verifica 2025</p>
-  </footer>
+  <!-- Tela 3: Detector -->
+  <section id="tela-detector" class="tela">
+    <div class="conteudo">
+      <h1>📰 Verifica - Detector de Fake News</h1>
+      <textarea id="textoNoticia" placeholder="Cole aqui a notícia que deseja verificar..."></textarea>
+      <button onclick="verificarNoticia()">Verificar</button>
+      <div id="resultado"></div>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
