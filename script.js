@@ -45,23 +45,6 @@ function verificarNoticia() {
     }
 }
 
-   Nota Pública (Registre-se para notas privadas)
-
-Buscar
-Minhas Notas Salvas
-Ordenar por Título Ordenar por Atualização
-Todas as Notas
-Caixa de Entrada
-Gerenciar Pastas
-Read Note Nota 09/23/2025 22:3 Read Note Nota 08/09/2025 22:3 
-Download on the Apple Store   Get it on Google Play
-
-© 2009-2025 aNotepad.com
-
-Sobre Privacidade Recursos Criador de Currículo Fax Grátis Denunciar Abuso
-
-aNotepad.com é seu bloco de notas online diário. Você pode criar e compartilhar notas online sem precisar fazer login.
-Você pode usar um editor de texto rico e baixar sua nota como documento PDF ou Word.
 O melhor de tudo - aNotepad é um bloco de notas online rápido, limpo e fácil de usar.
 
 
